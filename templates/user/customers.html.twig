@@ -1,0 +1,57 @@
+{% extends('base.html.twig') %}
+
+{% block title %}
+    <title>Listado de Clientes!</title>
+{% endblock %}
+
+{% block body %} 
+    <h1>Bienvenidos Clientes</h1>
+    <table class = "table table-hover">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Numero Cliente</td>
+            <td>Nombre</td>
+            <td>Nombre del Contacto</td>
+            <td>Telefono</td>
+            <td>Direccion 1</td>
+            <td>Direccion 2</td>
+            <td>Ciudad</td>
+            <td>Estado</td>
+            <td>Codigo Postal</td>
+            <td>Pais</td>
+            <td>salesRepEmployeeNumber</td>
+            <td>Limite de Credito</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for customers in lista %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{customers.customernumber}}</td>
+            <td>{{customers.customername}}</td>
+            <td>{{customers.contactlastname}} {{customers.contactfirstname}}</td>
+            <td>{{customers.phone}}</td>
+            <td>{{customers.addressline1}}</td>
+            <td>{{customers.addressline2}}</td>
+            <td>{{customers.city}}</td>
+            <td>{{customers.state}}</td>
+            <td>{{customers.postalcode}}</td>
+            <td>{{customers.country}}</td>
+            {% if customers.salesrepemployeenumber == null %}
+                <td>NULO</td>
+            {% else %}
+                    <td>{{customers.salesrepemployeenumber}}</td>
+            {% endif %}
+            <td>{{customers.creditlimit}}</td>  
+            <td>
+                <button class="button button-primary">Actualizar</button>
+                <button class="button button-danger">Eliminar</button>
+            </td>
+            
+        </tr>
+        {% endfor %}
+    </tbody> 
+    </table>
+{% endblock %}

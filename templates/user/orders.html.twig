@@ -1,0 +1,47 @@
+{% extends('base.html.twig') %}
+
+{% block title %}
+    <title>Listado de Ordenes!</title>
+{% endblock %}
+
+{% block body %} 
+    <h1>Ordenes</h1>
+    <table class = "table table-hover">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Num Orden</td>
+            <td>Fecha Orden</td>
+            <td>Fecha Requerida</td>
+            <td>Fecha Envio</td>
+            <td>Estado</td>
+            <td>Comentarios</td>
+            <td>Numero Cliente</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for orders in lista %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{orders.ordernumber}}</td>
+            <td>{{orders.orderdate.format('d/m/Y')}}</td>
+            <td>{{orders.requireddate.format('d/m/Y')}}</td>
+            {% if orders.shippeddate == null %}
+                <td>NULO</td>
+            {% else %}
+                <td>{{orders.shippeddate.format('d/m/Y')}}</td>
+            {% endif %}
+            <td>{{orders.status}}</td>
+            <td>{{orders.comments}}</td>
+            <td>{{orders.customernumber}}</td>  
+            <td>
+                <button class="button button-primary">Actualizar</button>
+                <button class="button button-danger">Eliminar</button>
+            </td>
+            
+        </tr>
+        {% endfor %}
+    </tbody> 
+    </table>
+{% endblock %}

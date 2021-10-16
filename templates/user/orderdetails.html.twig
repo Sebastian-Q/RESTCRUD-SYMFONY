@@ -1,0 +1,38 @@
+{% extends('base.html.twig') %}
+
+{% block title %}
+    <title>Listado de Detalles de Orden!</title>
+{% endblock %}
+
+{% block body %} 
+    <h1>Detalles de Orden</h1>
+    <table class = "table table-hover">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Numero</td>
+            <td>Codigo de Producto</td>
+            <td>QuantityOrdered</td>
+            <td>PriceEach</td>
+            <td>OrderLineNumber</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for orderdetails in lista %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{orderdetails.ordernumber}}</td>
+            <td>{{orderdetails.productcode}}</td>
+            <td>{{orderdetails.quantityordered}}</td>
+            <td>{{orderdetails.priceeach}}</td>
+            <td>{{orderdetails.orderlinenumber}}</td>
+            <td>
+                <button class="button button-primary">Actualizar</button>
+                <button class="button button-danger">Eliminar</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody> 
+    </table>
+{% endblock %}

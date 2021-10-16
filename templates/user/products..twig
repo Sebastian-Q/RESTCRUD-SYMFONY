@@ -1,0 +1,45 @@
+{% extends('base.html.twig') %}
+
+{% block title %}
+    <title>Listado de Productos!</title>
+{% endblock %}
+
+{% block body %} 
+    <h1>Productos</h1>
+    <table class = "table table-hover">
+    <thead>
+        <tr>
+            <td>#</td>  
+            <td>Codigo</td> 
+            <td>Producto</td>
+            <td>Producto Linea</td>
+            <td>Escala</td>
+            <td>Vendedor</td>
+            <td>Descripcion</td>
+            <td>Cantidad</td>
+            <td>Precio</td>
+            <td>MRSP</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for products in lista %}
+        <tr>
+            <td>{{products.productcode}}</td>
+            <td>{{products.productname}}</td>
+            <td>{{products.productline}}</td>
+            <td>{{products.productscale}}</td>
+            <td>{{products.productvendor}}</td>
+            <td>{{products.productdescription}}</td>
+            <td>{{products.quantityinstock}}</td>
+            <td>{{products.buyprice}}</td>
+            <td>{{products.msrp}}</td>  
+            <td>
+                <button class="button button-primary">Actualizar</button>
+                <button class="button button-danger">Eliminar</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody> 
+    </table>
+{% endblock %}

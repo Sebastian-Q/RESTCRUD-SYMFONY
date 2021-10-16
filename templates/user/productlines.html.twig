@@ -1,0 +1,36 @@
+{% extends('base.html.twig') %}
+
+{% block title %}
+    <title>Listado de Productos en Linea!</title>
+{% endblock %}
+
+{% block body %} 
+    <h1>Productos en Linea</h1>
+    <table class = "table table-hover">
+    <thead>
+        <tr>
+            <td>#</td>  
+            <td>Productos</td>  
+            <td>Descripcion</td>
+            <td>Descripcion HTML</td>
+            <td>Imagen</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for productolines in lista %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{productolines.productline}}</td>
+            <td>{{productolines.textdescription}}</td>
+            <td>{{productolines.htmldescription}}</td>
+            <td>{{productolines.image}}</td> 
+            <td>
+                <button class="button button-primary">Actualizar</button>
+                <button class="button button-danger">Eliminar</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody> 
+    </table>
+{% endblock %}

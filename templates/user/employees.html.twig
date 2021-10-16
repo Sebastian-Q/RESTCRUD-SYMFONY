@@ -1,0 +1,45 @@
+{% extends('base.html.twig') %}
+
+{% block title %}
+    <title>Listado de Empleados!</title>
+{% endblock %}
+
+{% block body %} 
+    <h1>Bienvenidos Empleados</h1>
+    <table class = "table table-hover">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Nombre</td>
+            <td>Extension</td>
+            <td>Correo Electronico</td>
+            <td>Codigo de Oficina</td>
+            <td>Reporte</td>
+            <td>Trabajo</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for employees in lista %}
+        <tr>
+            <td>{{employees.employeenumber}}</td>
+            <td>{{employees.lastname}} {{employees.firstname}}</td>
+            <td>{{employees.extension}}</td>
+            <td>{{employees.email}}</td>
+            <td>{{employees.officecode}}</td>
+                    {% if employees.reportsto == null %}
+                        <td>NULO</td>
+                    {% else %}
+                        <td>{{employees.reportsto}}</td>
+                    {% endif %}
+            <td>{{employees.jobtitle}}</td>  
+            <td>
+                <button class="button button-primary">Actualizar</button>
+                <button class="button button-danger">Eliminar</button>
+            </td>
+            
+        </tr>
+        {% endfor %}
+    </tbody> 
+    </table>
+{% endblock %}
